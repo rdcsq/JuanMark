@@ -41,3 +41,8 @@ switchport access vlan 36
 int range g1/0/17-19
 switchport mode access
 switchport access vlan 37
+
+int range g1/0/5-19
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
