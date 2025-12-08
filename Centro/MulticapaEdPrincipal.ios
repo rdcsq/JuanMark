@@ -1,0 +1,43 @@
+enable
+configure terminal
+no ip domain-lookup
+hostname MulticapaEdPrincipal
+
+vtp mode client
+vtp domain juanmark
+
+int vlan 33
+ip addr 148.60.128.2 255.255.255.0
+
+int g1/0/1
+description Enlace a SwEdPrincipal
+switchport mode trunk
+switchport trunk allowed vlan 33-37
+
+int range g1/0/23-24
+description Enlace a MulticapaEdAnexo
+channel-group 1 mode active
+
+int port 1
+switchport mode trunk
+switchport trunk allowed vlan 33-37
+
+int range g1/0/5-7
+switchport mode access
+switchport access vlan 33
+
+int range g1/0/8-10
+switchport mode access
+switchport access vlan 34
+
+int range g1/0/11-13
+switchport mode access
+switchport access vlan 35
+
+int range g1/0/14-16
+switchport mode access
+switchport access vlan 36
+
+int range g1/0/17-19
+switchport mode access
+switchport access vlan 37
