@@ -1,0 +1,51 @@
+en
+conf t
+hostname Switch3
+vtp mode server
+vtp domain NW
+vlan 5
+name MKT
+vlan 6
+name VENTAS
+vlan 7
+name COMPRAS
+vlan 9
+name TI
+exit
+interface fa0/1
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 5,6,7,9
+switchport port-security
+switchport port-security maximum 50
+switchport port-security violation shutdown
+exit
+interface g0/1
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 5,6,7,9
+switchport port-security
+switchport port-security maximum 50
+switchport port-security violation shutdown
+exit
+interface range FastEthernet0/2 - 6
+switchport mode access
+switchport access vlan 5
+switchport port-security
+switchport port-security maximum 50
+switchport port-security violation shutdown
+exit
+interface range FastEthernet0/7 - 12
+switchport mode access
+switchport access vlan 6
+switchport port-security
+switchport port-security maximum 50
+switchport port-security violation shutdown
+exit
+interface range FastEthernet0/13 - 18
+switchport mode access
+switchport access vlan 7
+switchport port-security
+switchport port-security maximum 50
+switchport port-security violation shutdown
+exit
