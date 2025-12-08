@@ -52,3 +52,12 @@ ip addr 148.60.131.1 255.255.255.0
 int g0/0.37
 encapsulation dot1Q 37
 ip addr 148.60.132.1 255.255.255.0
+
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret Gestion8.0
+line vty 0 15
+transport input ssh
+login local
+ip ssh version 2

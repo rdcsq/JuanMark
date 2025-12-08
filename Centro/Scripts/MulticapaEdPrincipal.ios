@@ -23,19 +23,22 @@ ip addr 148.60.128.2 255.255.255.0
 int g1/0/1
 description Enlace a SwEdPrincipal
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 33-37
 
 int g1/0/2
 description Enlace a Centro
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 33-37
 
 int range g1/0/23-24
 description Enlace a MulticapaEdAnexo
-channel-group 1 mode active
+channel-group 1 mode desirable
 
 int port 1
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 33-37
 
 int range g1/0/5-7
@@ -73,3 +76,12 @@ int range g1/0/5-19
 switchport port-security
 switchport port-security maximum 1
 switchport port-security violation shutdown
+
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret Gestion8.0
+line vty 0 15
+transport input ssh
+login local
+ip ssh version 2
