@@ -1,0 +1,55 @@
+enable
+configure terminal
+no ip domain-lookup
+
+hostname Centro
+
+ip dhcp excl 148.60.128.1 148.60.128.9
+ip dhcp excl 148.60.129.1 148.60.129.9
+ip dhcp excl 148.60.130.1 148.60.130.9
+ip dhcp excl 148.60.131.1 148.60.131.9
+ip dhcp excl 148.60.132.1 148.60.132.9
+
+ip dhcp pool vlan-gestionti
+network 148.60.128.0 255.255.255.0
+default-router 148.60.128.1
+
+ip dhcp pool vlan-gestionwlan
+network 148.60.129.0 255.255.255.0
+default-router 148.60.129.1
+
+ip dhcp pool vlan-ventaswlan
+network 148.60.130.0 255.255.255.0
+default-router 148.60.130.1
+
+ip dhcp pool vlan-compras
+network 148.60.131.0 255.255.255.0
+default-router 148.60.131.1
+
+ip dhcp pool vlan-practicantewlan
+network 148.60.132.0 255.255.255.0
+default-router 148.60.132.1
+
+int g0/0
+no shut
+
+int g0/0.33
+encapsulation dot1Q 33
+ip addr 148.60.128.2 255.255.255.0
+
+int g0/0.34
+encapsulation dot1Q 34
+ip addr 148.60.129.2 255.255.255.0
+
+int g0/0.35
+encapsulation dot1Q 35
+ip addr 148.60.130.2 255.255.255.0
+
+int g0/0.36
+encapsulation dot1Q 36
+ip addr 148.60.131.2 255.255.255.0
+
+int g0/0.37
+encapsulation dot1Q 37
+ip addr 148.60.132.2 255.255.255.0
+
