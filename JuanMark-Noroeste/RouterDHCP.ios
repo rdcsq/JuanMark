@@ -1,6 +1,15 @@
 en
 conf t
 hostname RouterDHCP
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2
 ipv6 unicast-routing
 interface GigabitEthernet0/1.9 
 encapsulation dot1Q 9
@@ -45,4 +54,12 @@ exit
 ip dhcp pool vlan7_COMPRAS
 network 148.60.3.0 255.255.255.0
 default-router 148.60.3.1
+exit
+router rip
+version 2
+no auto-summary
+network 148.60.0.0
+network 148.60.1.0
+network 148.60.2.0
+network 148.60.3.0
 exit
