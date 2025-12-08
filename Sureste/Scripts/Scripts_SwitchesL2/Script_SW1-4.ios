@@ -1,0 +1,46 @@
+enable
+configure terminal
+
+! CREAMOS LAS VLANS
+vlan 65
+name VENTAS
+exit
+
+vlan 66
+name TI
+exit
+
+vlan 67
+name COMPRAS
+exit
+
+vlan 68
+name MKT
+exit
+
+! CONFIGURAMOS LOS PUERTOS PARA CADA VLANS
+interface range fastethernet0/1-5
+switchport mode access
+switchport access vlan 65
+exit
+
+interface range fastethernet0/6-10
+switchport mode access
+switchport access vlan 66
+exit
+
+interface range fastethernet0/11-15
+switchport mode access
+switchport access vlan 67
+exit
+
+interface range fastethernet0/16-20
+switchport mode access
+switchport access vlan 68
+exit
+
+! CONFIGURAMOS PUERTO DE SALIDA PARA INTERVLAN
+interface range gigabitethernet0/1-2
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
