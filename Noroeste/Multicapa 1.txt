@@ -1,0 +1,42 @@
+enable
+config t
+no ip domain lookup
+hostname Multicapa1
+vlan 97
+name Gestion_Ti
+vlan 98
+name Ventas
+vlan 99
+name Compras
+vlan 100
+name Servicios
+
+int vlan 97
+ip add 148.60.64.2 255.255.240.0
+no shut
+int g1/0/2
+switchport mod trunk
+switchport trunk allowed vlan 97,98,99,100
+no shut
+exit
+ip domain-name juanmark.com
+crypto key generate rsa 
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+salida
+ip ssh version 2
+
+int range g1/0/4 - 14
+switchport mode access
+switchport access vlan 100
+no shut
+
+int range g1/0/15 - 24
+switchport mode access
+switchport access vlan 99
+no shut
+
+int range g1/0/1 -24
+spanning-tree portfast

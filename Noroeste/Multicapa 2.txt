@@ -1,0 +1,62 @@
+enable
+config t
+no ip domain lookup
+hostname Multicapa2
+vlan 97
+name Gestion_Ti
+vlan 98
+name Ventas
+vlan 99
+name Compras
+vlan 100
+name Servicios
+ip routing
+int vlan 97
+ip add 148.60.64.1 255.255.240.0
+no shut
+int vlan 98
+ip add 148.60.80.1 255.255.240.0
+no shut
+int vlan 99
+ip add 148.60.96.1 255.255.240.0
+no shut
+int vlan 100
+ip add 148.60.112.1 255.255.240.0
+no shut
+int range g1/0/2 - 3
+switchport mode trunk
+exit
+ip dhcp excluded-address 148.60.64.1 148.60.64.10
+ip dhcp excluded-address 148.60.80.1 148.60.80.10
+ip dhcp excluded-address 148.60.96.1 148.60.96.10
+ip dhcp excluded-address 148.60.112.1 148.60.112.10
+ip dhcp pool Gestion_Ti
+network 148.60.64.0 255.255.240.0
+default-router 148.60.64.1 
+ip dhcp pool Ventas 
+network 148.60.80.0 255.255.240.0
+default-router 148.60.80.1
+ip dhcp pool Compras
+network 148.60.96.0 255.255.240.0
+default-router 148.60.96.1
+
+ip dhcp pool Servicios
+network 148.60.112.1 255.255.240.0
+default-router 148.60.112.1
+
+exit
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+ip ssh version 2
+
+
+int range g1/0/1 -24
+spanning-tree portfast
+
+
+
