@@ -1,0 +1,65 @@
+en
+conf t
+hostname RouterDHCP
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2
+ipv6 unicast-routing
+interface GigabitEthernet0/1.9 
+encapsulation dot1Q 9
+ip address 148.60.0.1 255.255.255.0
+ipv6 address  2006:AFEA:B0CA:9::1/64
+ipv6 enable
+exit
+interface GigabitEthernet0/1.5
+encapsulation dot1Q 5
+ip address 148.60.1.1 255.255.255.0
+ipv6 address 2006:AFEA:B0CA:5::1/64
+ipv6 enable
+exit
+interface GigabitEthernet0/1.6
+encapsulation dot1Q 6
+ip address 148.60.2.1 255.255.255.0
+ipv6 address 2006:AFEA:B0CA:6::1/64
+ipv6 enable
+exit
+interface GigabitEthernet0/1.7
+encapsulation dot1Q 7
+ip address 148.60.3.1 255.255.255.0
+ipv6 address 2006:AFEA:B0CA:7::1/64
+ipv6 enable
+exit
+interface GigabitEthernet0/1
+no shut
+exit
+ip dhcp excluded-address 148.60.0.1 148.60.0.10
+ip dhcp pool vlan9_TI
+network 148.60.0.0 255.255.255.0
+default-router 148.60.0.1
+exit
+ip dhcp pool vlan5_MKT
+network 148.60.1.0 255.255.255.0
+default-router 148.60.1.1
+exit
+ip dhcp pool vlan6_VENTAS
+network 148.60.2.0 255.255.255.0
+default-router 148.60.2.1
+exit
+ip dhcp pool vlan7_COMPRAS
+network 148.60.3.0 255.255.255.0
+default-router 148.60.3.1
+exit
+router rip
+version 2
+no auto-summary
+network 148.60.0.0
+network 148.60.1.0
+network 148.60.2.0
+network 148.60.3.0
+exit

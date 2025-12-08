@@ -1,0 +1,36 @@
+en
+conf t
+hostname Switch2
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2
+vtp mode client
+vtp domain NW
+interface GigabitEthernet0/1
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 5,6,7,9
+exit
+interface GigabitEthernet0/2
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 5,6,7,9
+exit
+interface fastEthernet0/1
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 5,6,7,9
+exit
+interface range FastEthernet0/19 - 24
+switchport mode access
+switchport access vlan 9
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+exit
