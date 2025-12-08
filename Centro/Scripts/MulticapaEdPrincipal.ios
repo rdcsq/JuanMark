@@ -3,8 +3,19 @@ configure terminal
 no ip domain-lookup
 hostname MulticapaEdPrincipal
 
-vtp mode client
+vtp mode server
 vtp domain juanmark
+
+vlan 33
+name gestionti
+vlan 34
+name gestionwlan
+vlan 35
+name ventaswlan
+vlan 36
+name compras
+vlan 37
+name practicantewlan
 
 int vlan 33
 ip addr 148.60.128.2 255.255.255.0
@@ -14,7 +25,7 @@ description Enlace a SwEdPrincipal
 switchport mode trunk
 switchport trunk allowed vlan 33-37
 
-int g1/0/3
+int g1/0/2
 description Enlace a Centro
 switchport mode trunk
 switchport trunk allowed vlan 33-37
@@ -46,3 +57,19 @@ switchport access vlan 36
 int range g1/0/17-19
 switchport mode access
 switchport access vlan 37
+exit
+
+ip dhcp snooping
+
+int range g1/0/23-24
+ip dhcp snooping trust
+ip arp inspection trust
+
+int range g1/0/1-2
+ip dhcp snooping trust
+ip arp inspection trust
+
+int range g1/0/5-19
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
