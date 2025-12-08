@@ -1,0 +1,34 @@
+enable
+configure terminal
+no ip domain-lookup
+
+vtp mode client
+vtp domain juanmark
+
+int vlan 33
+ip addr 148.60.128.4 255.255.255.0
+
+int g0/1
+description Enlace a MulticapaEdAnexo
+switchport mode trunk
+switchport trunk allowed vlan 33-37
+
+int range f0/1-3
+switchport mode access
+switchport access vlan 33
+
+int range f0/4-6
+switchport mode access
+switchport access vlan 34
+
+int range f0/7-9
+switchport mode access
+switchport access vlan 35
+
+int range f0/10-12
+switchport mode access
+switchport access vlan 36
+
+int range f0/13-15
+switchport mode access
+switchport access vlan 37
