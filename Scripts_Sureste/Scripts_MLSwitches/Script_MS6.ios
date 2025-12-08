@@ -1,0 +1,62 @@
+enable
+configure terminal
+
+! RUTEO INTER-VLAN
+ip routing
+
+! CREAMOS LAS VLAN
+vlan 65
+name VENTAS
+exit
+
+vlan 66
+name TI
+exit
+
+vlan 67
+name COMPRAS
+exit
+
+vlan 68
+name MKT
+exit
+
+! CONFIGURAMOS ETHERCHANNEL
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 3
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface range GigabitEthernet1/0/19-20
+shutdown
+channel-group 1 mode desirable
+no shutdown
+exit
+
+interface range GigabitEthernet1/0/21-22
+shutdown
+channel-group 2 mode desirable
+no shutdown
+exit
+
+interface range GigabitEthernet1/0/23-24
+shutdown
+channel-group 3 mode desirable
+no shutdown
+exit
+
+interface range GigabitEthernet1/0/17-18
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+no shutdown
+exit
