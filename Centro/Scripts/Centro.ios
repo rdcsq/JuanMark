@@ -58,6 +58,15 @@ int g0/1
 ip addr 148.60.160.1 255.255.255.252
 no shut
 
+int g0/2/0
+ip addr 148.60.160.5 255.255.255.252
+no shut
+
+int g0/3/0
+ip addr 148.60.140.9 255.255.255.252
+no shut
+
+
 ip domain-name juanmark.com
 crypto key generate rsa
 1024
@@ -69,7 +78,10 @@ ip ssh version 2
 
 router rip
 version 2
+no auto-summary
 network 148.60.130.0
 network 148.60.131.0
 network 148.60.132.0
 network 148.60.160.0
+network 148.60.160.4
+network 148.60.160.8
