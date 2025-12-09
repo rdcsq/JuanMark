@@ -3,7 +3,7 @@ configure terminal
 ! hostname DIOSMAYA (Agregamos el hostname correspondiente al switch)
 ! Kukulkan - AhPuch - Ixtab - YumCimil
 
-
+vtp domain juanmark
 vtp mode transparent
 ! CREAMOS LAS VLANS
 vlan 65
