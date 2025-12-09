@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname MS4
+hostname IXCHEL
 
 ! RUTEO INTER-VLAN
 ip routing

@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname MS6
+hostname EKCHUAJ
 
 ! RUTEO INTER-VLAN
 ip routing

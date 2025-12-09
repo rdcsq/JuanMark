@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname MS2
+hostname CHAAC
 
 ! RUTEO INTER-VLAN
 ip routing

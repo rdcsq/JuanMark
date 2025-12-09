@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname MS1
+hostname MARCUSVINICIUS
 
 ! CONFIGURAMOS VTP
 vtp domain SURESTE

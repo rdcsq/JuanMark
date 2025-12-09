@@ -1,6 +1,6 @@
 enable
 configure terminal
-! hostname SW1 (Agregamos el hostname correspondiente al switch)
+! hostname DIOSMAYA (Agregamos el hostname correspondiente al switch)
 
 ! CONFIGURAMOS VTP
 vtp domain SURESTE

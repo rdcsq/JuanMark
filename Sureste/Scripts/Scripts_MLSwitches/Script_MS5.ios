@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname MS5
+hostname KINICHAHAU
 
 ! RUTEO INTER-VLAN
 ip routing
