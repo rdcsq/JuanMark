@@ -14,9 +14,10 @@ name Servicios
 int vlan 97
 ip add 148.60.97.2 255.255.255.0
 no shut
-int g1/0/2
+int range g1/0/2 - 3
 switchport mod trunk
 switchport trunk allowed vlan 97,98,99,100
+switchport nonegotiate
 no shut
 exit
 
@@ -37,6 +38,13 @@ int g1/0/1
 no switchport
 ip add 148.60.110.22 255.255.255.252
 no shut
+
+ip routing
+router rip
+version 2
+no auto
+network 148.60.0.0
+exit
 
 ip domain-name juanmark.com
 crypto key generate rsa 

@@ -14,9 +14,10 @@ name Servicios
 int vlan 97
 ip add 148.60.97.3 255.255.255.0
 
-int g1/0/2
+int range g1/0/2 - 3
 switchport mod trunk
 switchport trunk allowed vlan 97,98,99,100  
+switchport nonegotiate
 exit
 
 
@@ -80,7 +81,6 @@ no auto
 network 148.60.0.0
 
 exit
-
 
 
 ip domain-name juanmark.com

@@ -14,3 +14,14 @@ router rip
 version 2
 no auto
 network 148.60.0.0
+exit
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2
+
