@@ -1,0 +1,88 @@
+enable
+configure terminal
+hostname CHAAC
+
+! RUTEO INTER-VLAN
+ip routing
+
+vtp domain juanmark
+vtp mode transparent
+! CREAMOS LAS VLANS
+vlan 65
+name sureste_ventas
+exit
+
+vlan 66
+name sureste_ti
+exit
+
+vlan 67
+name sureste_compras
+exit
+
+vlan 68
+name sureste_mkt
+exit
+
+! CONFIGURAMOS VTP
+vtp domain juanmark
+vtp mode client
+
+! CONFIGURAMOS ETHERCHANNEL
+interface range GigabitEthernet1/0/19-20
+shutdown
+channel-group 1 mode desirable
+no shutdown
+exit
+
+interface range GigabitEthernet1/0/21-22
+shutdown
+channel-group 2 mode desirable
+no shutdown
+exit
+
+interface range GigabitEthernet1/0/23-24
+shutdown
+channel-group 3 mode desirable
+no shutdown
+exit
+
+interface port-channel 1
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 2
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 3
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface range GigabitEthernet1/0/17-18
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 65,66,67,68
+no shutdown
+exit
+
+! ACTIVAMOS RAPID PVST
+spanning-tree mode rapid-pvst
+
+! CONFIGURAMOS SSH
+ip domain-name juanmark.com
+crypto key generate rsa
+yes
+1024
+username admin secret Gestion8.0
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2

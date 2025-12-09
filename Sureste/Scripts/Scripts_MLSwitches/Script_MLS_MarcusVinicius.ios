@@ -2,25 +2,28 @@ enable
 configure terminal
 hostname MARCUSVINICIUS
 
-! CONFIGURAMOS VTP
-vtp domain SURESTE
-vtp password Gestion8.0
-vtp mode server
-vtp version 2
-
-! CREAMOS LAS VLAN
+vtp domain juanmark
+vtp mode transparent
+! CREAMOS LAS VLANS
 vlan 65
-name VENTAS
+name sureste_ventas
 exit
+
 vlan 66
-name TI
+name sureste_ti
 exit
+
 vlan 67
-name COMPRAS
+name sureste_compras
 exit
+
 vlan 68
-name MKT
+name sureste_mkt
 exit
+
+! CONFIGURAMOS VTP
+vtp domain juanmark
+vtp mode client
 
 ! CONFIGURAMOS DHCP PARA VLANS
 ip dhcp excluded-address 148.60.192.1 148.60.192.10
@@ -91,6 +94,7 @@ ip routing
 ! CONFIGURAMOS INTERFACES FISICAS
 interface range GigabitEthernet1/0/22-23
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 65,66,67,68
 no shutdown
 exit
@@ -116,16 +120,19 @@ exit
 
 interface port-channel 1
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 65,66,67,68
 exit
 
 interface port-channel 2
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 65,66,67,68
 exit
 
 interface port-channel 3
 switchport mode trunk
+switchport nonegotiate
 switchport trunk allowed vlan 65,66,67,68
 exit
 
@@ -153,6 +160,7 @@ spanning-tree vlan 67,68 root secondary
 ! CONFIGURAMOS SSH
 ip domain-name juanmark.com
 crypto key generate rsa
+yes
 1024
 username admin secret Gestion8.0
 line vty 0 15

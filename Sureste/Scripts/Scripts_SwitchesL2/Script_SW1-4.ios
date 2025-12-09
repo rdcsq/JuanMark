@@ -1,28 +1,30 @@
 enable
 configure terminal
 ! hostname DIOSMAYA (Agregamos el hostname correspondiente al switch)
+! Kukulkan - AhPuch - Ixtab - YumCimil
+
+
+vtp mode transparent
+! CREAMOS LAS VLANS
+vlan 65
+name sureste_ventas
+exit
+
+vlan 66
+name sureste_ti
+exit
+
+vlan 67
+name sureste_compras
+exit
+
+vlan 68
+name sureste_mkt
+exit
 
 ! CONFIGURAMOS VTP
-vtp domain SURESTE
-vtp password Gestion8.0
+vtp domain juanmark
 vtp mode client
-
-! CREAMOS LAS VLANS
-! vlan 65
-! name VENTAS
-! exit
-
-! vlan 66
-! name TI
-! exit
-
-! vlan 67
-! name COMPRAS
-! exit
-
-! vlan 68
-! name MKT
-! exit
 
 ! CONFIGURAMOS LOS PUERTOS PARA CADA VLANS
 interface range fastethernet0/1-5
@@ -48,6 +50,7 @@ exit
 ! CONFIGURAMOS PUERTO DE SALIDA PARA INTERVLAN
 interface range gigabitethernet0/1-2
 switchport mode trunk
+
 switchport trunk allowed vlan 65,66,67,68
 exit
 
@@ -67,6 +70,7 @@ switchport port-security violation shutdown
 ! CONFIGURAMOS SSH
 ip domain-name juanmark.com
 crypto key generate rsa
+yes
 1024
 username admin secret Gestion8.0
 line vty 0 15
