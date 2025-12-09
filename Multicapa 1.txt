@@ -12,7 +12,7 @@ vlan 100
 name Servicios
 
 int vlan 97
-ip add 148.60.64.2 255.255.240.0
+ip add 148.60.97.2 255.255.255.0
 no shut
 int g1/0/2
 switchport mod trunk
@@ -40,3 +40,7 @@ no shut
 
 int range g1/0/1 -24
 spanning-tree portfast
+
+int g1/0/1
+ip add 148.60.110.22 255.255.255.252
+no shut

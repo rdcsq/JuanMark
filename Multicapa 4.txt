@@ -11,7 +11,7 @@ vlan 100
 name Servicios
 hostname Multicapa4
 int vlan 97
-ip add 148.60.64.4 255.255.240.0
+ip add 148.60.97.4 255.255.255.0
 int g1/0/1
 switchport mod trunk
 switchport trunk allowed vlan 97,98,99,100
@@ -44,3 +44,4 @@ switchport access vlan 100
 
 int range g1/0/1 -24
 spanning-tree portfast
+

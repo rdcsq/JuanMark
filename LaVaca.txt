@@ -1,0 +1,33 @@
+enable
+config t
+no ip domain-lookup
+hostname LaVaca
+
+int g0/1
+ip add 148.60.110.13 255.255.255.252
+no shut
+int g0/2
+ip add 148.60.110.17 255.255.255.252
+no shut
+int fa0/3/0
+ip add 148.60.110.5 255.255.255.252
+no shut
+
+interface g0/0
+ip address 148.60.110.25 255.255.255.252
+standby 1 ip 148.60.110.30
+standby 1 priority 100
+standby 1 preempt
+
+no shutdown
+
+
+router rip
+version 2
+network 148.60.110.4
+network 148.60.110.24
+network 148.60.110.12
+network 148.60.110.16
+
+
+

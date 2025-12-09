@@ -1,0 +1,25 @@
+enable
+config t
+no ip domain-lookup
+hostname LaSilla
+int g0/2
+ip add 149.60.110.18 255.255.255.252
+no shut
+int g0/1
+ip add 149.60.110.9 255.255.255.252
+no shut
+
+interface g0/0
+ip address 148.60.110.29 255.255.255.252
+standby 1 ip 148.60.110.30
+standby 1 priority 110
+standby 1 preempt
+no shutdown
+
+router rip
+version 2
+network 148.60.110.8
+network 148.60.110.16
+network 148.60.110.28
+
+
