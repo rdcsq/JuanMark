@@ -21,6 +21,7 @@ default-router 148.60.129.1
 ip dhcp pool vlan-ventaswlan
 network 148.60.130.0 255.255.255.0
 default-router 148.60.130.1
+dns-server 148.60.130.8
 
 ip dhcp pool vlan-compras
 network 148.60.131.0 255.255.255.0
