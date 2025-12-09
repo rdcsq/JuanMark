@@ -22,21 +22,6 @@ name MKT
 exit
 
 ! CONFIGURAMOS ETHERCHANNEL
-interface port-channel 1
-switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
-exit
-
-interface port-channel 2
-switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
-exit
-
-interface port-channel 3
-switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
-exit
-
 interface range GigabitEthernet1/0/19-20
 shutdown
 channel-group 1 mode desirable
@@ -55,8 +40,26 @@ channel-group 3 mode desirable
 no shutdown
 exit
 
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 3
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
 interface range GigabitEthernet1/0/17-18
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
 no shutdown
 exit
+
+! ACTIVAMOS RAPID PVST
+spanning-tree mode rapid-pvst

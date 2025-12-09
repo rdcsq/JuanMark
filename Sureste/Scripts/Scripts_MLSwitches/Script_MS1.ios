@@ -64,7 +64,7 @@ exit
 interface Vlan67
 ip address 148.60.194.1 255.255.255.0
 standby 67 ip 148.60.194.2
-standby 67 priority 105
+standby 67 priority 100
 standby 67 preempt
 standby 67 track GigabitEthernet1/0/24
 no shutdown
@@ -73,7 +73,7 @@ exit
 interface Vlan68
 ip address 148.60.195.1 255.255.255.0
 standby 68 ip 148.60.195.2
-standby 68 priority 105
+standby 68 priority 100
 standby 68 preempt
 standby 68 track GigabitEthernet1/0/24
 no shutdown
@@ -90,21 +90,6 @@ no shutdown
 exit
 
 ! CONFIGURAMOS ETHERCHANNEL
-interface port-channel 1
-switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
-exit
-
-interface port-channel 2
-switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
-exit
-
-interface port-channel 3
-switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
-exit
-
 interface range GigabitEthernet1/0/15-16
 shutdown
 channel-group 1 mode desirable
@@ -123,6 +108,21 @@ channel-group 3 mode desirable
 no shutdown
 exit
 
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
+interface port-channel 3
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+exit
+
 ! CONFIGURAMOS INTERFAZ HACIA ITZAMNA
 interface GigabitEthernet1/0/24
 no switchport
@@ -136,3 +136,10 @@ version 2
 no auto-summary
 network 148.60.0.0
 exit
+
+! ACTIVAMOS RAPID PVST
+spanning-tree mode rapid-pvst
+
+! ASIGNAMOS ROOT BRIDGE
+spanning-tree vlan 65,66 root primary
+spanning-tree vlan 67,68 root secondary
