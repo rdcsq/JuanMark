@@ -9,12 +9,13 @@ no shut
 int g0/2
 ip add 148.60.110.17 255.255.255.252
 no shut
-
-
 interface g0/0
 ip address 148.60.110.25 255.255.255.252
 no shutdown
-
+int g0/2/0
+ip add 148.60.160.14 255.255.255.252
+no shut
+exit
 
 router rip
 version 2

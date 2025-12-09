@@ -10,6 +10,10 @@ interface g0/0
 ip address 148.60.110.29 255.255.255.252
 no shutdown
 
+int g0/1
+ip add
+no shut
+
 router rip
 version 2
 no auto
