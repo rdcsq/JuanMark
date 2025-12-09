@@ -13,18 +13,38 @@ name Servicios
 ip routing
 int vlan 97
 ip add 148.60.97.1 255.255.255.0
-no shut
+standby 97 ip 148.60.97.5
+standby 97 priority 105
+standby 97 preempt
+standby 97 track GigabitEthernet1/0/1
+no shutdown
+exit
 int vlan 98
 ip add 148.60.98.1 255.255.255.0
+standby 98 ip 148.60.98.5
+standby 98 priority 105
+standby 98 preempt
+standby 98 track GigabitEthernet1/0/1
 no shut
 int vlan 99
 ip add 148.60.99.1 255.255.255.0
+standby 99 ip 148.60.99.5
+standby 99 priority 105
+standby 99 preempt
+standby 99 track GigabitEthernet1/0/1
 no shut
+
 int vlan 100
 ip add 148.60.100.1 255.255.255.0
+standby 100 ip 148.60.100.5
+standby 100 priority 105
+standby 100 preempt
+standby 100 track GigabitEthernet1/0/1
 no shut
 int range g1/0/2 - 3
 switchport mode trunk
+switchport nonegotiate
+
 exit
 ip dhcp excluded-address 148.60.97.1 148.60.97.10
 ip dhcp excluded-address 148.60.98.1 148.60.98.10
@@ -32,19 +52,37 @@ ip dhcp excluded-address 148.60.99.1 148.60.99.10
 ip dhcp excluded-address 148.60.100.1 148.60.100.10
 ip dhcp pool Gestion_Ti
 network 148.60.97.0 255.255.255.0
-default-router 148.60.97.1 
+default-router 148.60.97.5 
 ip dhcp pool Ventas 
 network 148.60.98.0 255.255.255.0
-default-router 148.60.98.1
+default-router 148.60.98.5
 ip dhcp pool Compras
 network 148.60.99.0 255.255.255.0
-default-router 148.60.99.1
+default-router 148.60.99.5
 
 ip dhcp pool Servicios
 network 148.60.100.0 255.255.255.0
-default-router 148.60.100.1
+default-router 148.60.100.5
 
 exit
+
+
+int g1/0/1
+no switchport
+ip add 148.60.110.26 255.255.255.252
+no shut
+exit
+
+ip routing
+router rip
+version 2
+no auto
+network 148.60.0.0
+exit
+
+
+
+
 ip domain-name juanmark.com
 crypto key generate rsa
 1024
@@ -52,15 +90,8 @@ username admin secret 12345
 line vty 0 15
 transport input ssh
 login local
+exit
 ip ssh version 2
-
-
-int range g1/0/1 -24
-spanning-tree portfast
-
-int g1/0/1
-ip add 148.60.110.26 255.255.255.252
-no shut
 
 
 

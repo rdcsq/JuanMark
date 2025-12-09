@@ -19,14 +19,6 @@ int g1/0/2
 switchport mod trunk
 switchport trunk allowed vlan 97,98,99,100
 exit
-ip domain-name juanmark.com
-crypto key generate rsa
-1024
-username admin secret 12345
-line vty 0 15
-transport input ssh
-login local
-ip ssh version 2
 
 int range g1/0/3 - 10
 switchport mode access
@@ -44,4 +36,13 @@ switchport access vlan 100
 
 int range g1/0/1 -24
 spanning-tree portfast
+
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret 12345
+line vty 0 15
+transport input ssh
+login local
+ip ssh version 2
 
