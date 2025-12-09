@@ -119,3 +119,14 @@ spanning-tree mode rapid-pvst
 ! ASIGNAMOS ROOT BRIDGE
 spanning-tree vlan 67,68 root primary
 spanning-tree vlan 65,66 root secondary
+
+! CONFIGURAMOS SSH
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret Gestion8.0
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2

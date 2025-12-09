@@ -20,3 +20,14 @@ version 2
 no auto-summary
 network 148.60.0.0
 exit
+
+! CONFIGURAMOS SSH
+ip domain-name juanmark.com
+crypto key generate rsa
+1024
+username admin secret Gestion8.0
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2
