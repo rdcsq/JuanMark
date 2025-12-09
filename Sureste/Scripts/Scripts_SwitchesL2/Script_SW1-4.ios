@@ -57,3 +57,9 @@ spanning-tree mode rapid-pvst
 ! ACTIVAMOS PORTFAST EN PUERTOS DE ACCESO
 interface range fastethernet0/1-24
 spanning-tree portfast
+
+! CONFIGURAMOS SWITCHPORT SECURITY
+interface range fastethernet0/1-23
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
