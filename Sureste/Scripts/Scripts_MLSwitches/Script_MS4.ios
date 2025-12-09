@@ -21,6 +21,39 @@ vlan 68
 name MKT
 exit
 
+! CONFIGURAMOS INTERFACES VLAN
+interface Vlan65
+ip address 148.60.192.3 255.255.255.0
+standby 65 ip 148.60.192.2
+standby 65 priority 100
+standby 65 preempt
+no shutdown
+exit
+
+interface Vlan66
+ip address 148.60.193.3 255.255.255.0
+standby 66 ip 148.60.193.2
+standby 66 priority 100
+standby 66 preempt
+no shutdown
+exit
+
+interface Vlan67
+ip address 148.60.194.3 255.255.255.0
+standby 67 ip 148.60.194.2
+standby 67 priority 100
+standby 67 preempt
+no shutdown
+exit
+
+interface Vlan68
+ip address 148.60.195.3 255.255.255.0
+standby 68 ip 148.60.195.2
+standby 68 priority 100
+standby 68 preempt
+no shutdown
+exit
+
 ! CONFIGURAMOS ETHERCHANNEL
 interface port-channel 1
 switchport mode trunk
@@ -60,3 +93,16 @@ switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
 no shutdown
 exit
+
+! CONFIGURAMOS LA INTERFAZ HACIA YUMKAAX
+interface GigabitEthernet1/0/24
+no switchport
+ip address 148.60.196.6 255.255.255.252
+no shutdown
+exit
+
+! CONFIGURAMOS RIP
+router rip
+version 2
+no auto-summary
+network 148.60.0.0

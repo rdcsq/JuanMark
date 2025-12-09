@@ -24,42 +24,58 @@ ip dhcp excluded-address 148.60.195.1 148.60.195.10
 
 ip dhcp pool POOL-VENTAS
 network 148.60.192.0 255.255.255.0
-default-router 148.60.192.1
+default-router 148.60.192.2
 exit
 
 ip dhcp pool POOL-TI
 network 148.60.193.0 255.255.255.0
-default-router 148.60.193.1
+default-router 148.60.193.2
 exit
 
 ip dhcp pool POOL-COMPRAS
 network 148.60.194.0 255.255.255.0
-default-router 148.60.194.1
+default-router 148.60.194.2
 exit
 
 ip dhcp pool POOL-MKT
 network 148.60.195.0 255.255.255.0
-default-router 148.60.195.1
+default-router 148.60.195.2
 exit
 
 ! CONFIGURAMOS INTERFACES VLAN
 interface Vlan65
 ip address 148.60.192.1 255.255.255.0
+standby 65 ip 148.60.192.2
+standby 65 priority 105
+standby 65 preempt
+standby 65 track GigabitEthernet1/0/24
 no shutdown
 exit
 
 interface Vlan66
 ip address 148.60.193.1 255.255.255.0
+standby 66 ip 148.60.193.2
+standby 66 priority 105
+standby 66 preempt
+standby 66 track GigabitEthernet1/0/24
 no shutdown
 exit
 
 interface Vlan67
 ip address 148.60.194.1 255.255.255.0
+standby 67 ip 148.60.194.2
+standby 67 priority 105
+standby 67 preempt
+standby 67 track GigabitEthernet1/0/24
 no shutdown
 exit
 
 interface Vlan68
 ip address 148.60.195.1 255.255.255.0
+standby 68 ip 148.60.195.2
+standby 68 priority 105
+standby 68 preempt
+standby 68 track GigabitEthernet1/0/24
 no shutdown
 exit
 
@@ -105,4 +121,18 @@ interface range GigabitEthernet1/0/19-20
 shutdown
 channel-group 3 mode desirable
 no shutdown
+exit
+
+! CONFIGURAMOS INTERFAZ HACIA ITZAMNA
+interface GigabitEthernet1/0/24
+no switchport
+ip address 148.60.196.2 255.255.255.252
+no shutdown
+exit
+
+! CONFIGURAMOS RIP
+router rip
+version 2
+no auto-summary
+network 148.60.0.0
 exit

@@ -1,0 +1,22 @@
+enable
+configure terminal
+hostname ITZAMNA
+
+! CONFIGURAMOS LA INTERFAZ HACIA MS1
+interface GigabitEthernet0/1
+ip address 148.60.196.1 255.255.255.252
+no shutdown
+exit
+
+! CONFIGURAMOS LA INTERFAZ HACIA YUMKAAX
+interface GigabitEthernet0/0
+ip address 148.60.196.9 255.255.255.252
+no shutdown
+exit
+
+! CONFIGURAMOS RIP
+router rip
+version 2
+no auto-summary
+network 148.60.0.0
+exit
