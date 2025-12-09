@@ -11,8 +11,25 @@
 | 37 | practicantewlan | 148.60.132.0/24 |
 
 | Dispositivo | Interfaz | Dirección IP | Prefijo |
-| --- | --- | --- | --- |
-| SwEdPrincipal | VLAN 33 | 148.60.128.1 | /24 |
-| MulticapaEdPrincipal | VLAN 33 | 148.60.128.2 | /24 |
+| :---- | :---- | :---- | :---- |
+| Centro | VLAN 33 | 148.60.128.1 | /24 |
+|  | VLAN 34 | 148.60.129.1 | /24 |
+|  | VLAN 35 | 148.60.130.1 | /24 |
+|  | VLAN 36 | 148.60.131.1 | /24 |
+|  | VLAN 37 | 148.60.132.1 | /24 |
 | MulticapaEdAnexo | VLAN 33 | 148.60.128.3 | /24 |
+| MulticapaEdPrincipal | VLAN 33 | 148.60.128.2 | /24 |
 | SwEdAnexo | VLAN 33 | 148.60.128.4 | /24 |
+| SwEdPrincipal | VLAN 33 | 148.60.128.1 | /24 |
+| WLCEdAnexo | Management | 148.60.129.2 | /24 |
+| APEdAnexo | G0 | DHCP |  |
+| APEdPrincipal | G0 | DHCP |  |
+| Host Ventas | Wireless0 | DHCP |  |
+| Host Ventas 2 | Wireless0 | DHCP |  |
+| Host Practicante | Wireless0 | DHCP |  |
+| Host Practicante 2 | Wireless0 | DHCP |  |
+| Usuario | F0 | DHCP |  |
+| Usuario2 | F0 | DHCP |  |
+| Usuario3 | F0 | DHCP |  |
+| Staff IT | F0 | DHCP |  |
+| Staff IT 2 | F0 | DHCP |  |
