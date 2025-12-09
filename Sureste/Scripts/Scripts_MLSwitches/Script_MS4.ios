@@ -1,25 +1,31 @@
 enable
 configure terminal
+hostname MS4
 
 ! RUTEO INTER-VLAN
 ip routing
 
+! CONFIGURAMOS VTP
+vtp domain SURESTE
+vtp password Gestion8.0
+vtp mode client
+
 ! CREAMOS LAS VLAN
-vlan 65
-name VENTAS
-exit
+! vlan 65
+! name VENTAS
+! exit
 
-vlan 66
-name TI
-exit
+! vlan 66
+! name TI
+! exit
 
-vlan 67
-name COMPRAS
-exit
+! vlan 67
+! name COMPRAS
+! exit
 
-vlan 68
-name MKT
-exit
+! vlan 68
+! name MKT
+! exit
 
 ! CONFIGURAMOS INTERFACES VLAN
 interface Vlan65

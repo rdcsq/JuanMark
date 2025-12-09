@@ -2,6 +2,12 @@ enable
 configure terminal
 hostname MS1
 
+! CONFIGURAMOS VTP
+vtp domain SURESTE
+vtp password Gestion8.0
+vtp mode server
+vtp version 2
+
 ! CREAMOS LAS VLAN
 vlan 65
 name VENTAS
