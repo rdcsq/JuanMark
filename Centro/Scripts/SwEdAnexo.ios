@@ -35,6 +35,12 @@ int range f0/13-15
 switchport mode access
 switchport access vlan 37
 
+int g0/2
+description Enlace a AP
+switchport mode trunk
+switchport nonegotiate
+switchport trunk native vlan 34
+
 int range f0/1-15
 switchport port-security
 switchport port-security maximum 1
