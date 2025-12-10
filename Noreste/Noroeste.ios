@@ -3,6 +3,7 @@ conf t
 hostname Noroeste
 ip domain-name juanmark.com
 crypto key generate rsa
+yes
 1024
 username admin secret 12345
 line vty 0 15
@@ -43,15 +44,18 @@ ip dhcp pool vlan9_TI
 network 148.60.0.0 255.255.255.0
 default-router 148.60.0.1
 exit
+ip dhcp excluded-address 148.60.1.1 148.60.1.10
 ip dhcp pool vlan5_MKT
 network 148.60.1.0 255.255.255.0
 default-router 148.60.1.1
 exit
+ip dhcp excluded-address 148.60.2.1 148.60.2.10
 ip dhcp pool vlan6_VENTAS
 network 148.60.2.0 255.255.255.0
 default-router 148.60.2.1
 dns-server 148.60.130.8
 exit
+ip dhcp excluded-address 148.60.3.1 148.60.3.10
 ip dhcp pool vlan7_COMPRAS
 network 148.60.3.0 255.255.255.0
 default-router 148.60.3.1
@@ -65,4 +69,14 @@ network 148.60.2.0
 network 148.60.3.0
 network 148.60.160.0
 network 148.60.160.12
+exit
+int g0/2
+ip addr 148.60.160.2 255.255.255.252
+bandwidth 1500
+no shut 
+exit
+int g0/3/0
+ip addr 148.60.160.13 255.255.255.252
+bandwidth 1500
+no shut 
 exit

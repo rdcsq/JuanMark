@@ -3,6 +3,7 @@ conf t
 hostname SwitchNorte
 ip domain-name juanmark.com
 crypto key generate rsa
+yes
 1024
 username admin secret 12345
 line vty 0 15

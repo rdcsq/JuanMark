@@ -3,6 +3,7 @@ conf t
 hostname SwitchCentro
 ip domain-name juanmark.com
 crypto key generate rsa
+yes
 1024
 username admin secret 12345
 line vty 0 15
@@ -20,32 +21,6 @@ vlan 7
 name noroeste_compras
 vlan 9
 name noroeste_ti
-vlan 33
-name centro_ti
-vlan 34
-name centro_gestionwlan
-vlan 35
-name centro_ventas
-vlan 36
-name centro_compras
-vlan 37
-name centro_practicante
-vlan 65
-name sureste_ventas
-vlan 66
-name sureste_ti
-vlan 67
-name sureste_compras
-vlan 68
-name sureste_mkt
-vlan 97
-name noreste_gestion_ti
-vlan 98
-name noreste_ventas
-vlan 99
-name noreste_compras
-vlan 100
-name noreste_servicios
 exit
 
 interface fa0/1
