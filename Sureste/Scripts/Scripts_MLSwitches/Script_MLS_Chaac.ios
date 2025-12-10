@@ -83,3 +83,9 @@ transport input ssh
 login local
 exit
 ip ssh version 2
+
+! CONFIGURAMOS VLAN PARA GESTION SSH
+interface Vlan66
+ip address 148.60.193.4 255.255.255.0
+no shutdown
+exit
