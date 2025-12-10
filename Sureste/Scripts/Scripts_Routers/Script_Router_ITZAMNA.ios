@@ -2,7 +2,7 @@ enable
 configure terminal
 hostname ITZAMNA
 
-! CONFIGURAMOS LA INTERFAZ HACIA MS1
+! CONFIGURAMOS LA INTERFAZ HACIA MARCUSVINICIUS
 interface GigabitEthernet0/1
 ip address 148.60.196.1 255.255.255.252
 no shutdown
@@ -11,6 +11,13 @@ exit
 ! CONFIGURAMOS LA INTERFAZ HACIA YUMKAAX
 interface GigabitEthernet0/0
 ip address 148.60.196.9 255.255.255.252
+no shutdown
+exit
+
+! CONFIGURAMOS LA INTERFAZ HACIA REGION CENTRO
+interface GigabitEthernet0/2/0
+ip address 148.60.160.10 255.255.255.252
+bandwidth 1000
 no shutdown
 exit
 

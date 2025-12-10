@@ -5,28 +5,25 @@ hostname KINICHAHAU
 ! RUTEO INTER-VLAN
 ip routing
 
-vtp domain juanmark
-vtp mode transparent
-! CREAMOS LAS VLANS
-vlan 65
-name sureste_ventas
-exit
-
-vlan 66
-name sureste_ti
-exit
-
-vlan 67
-name sureste_compras
-exit
-
-vlan 68
-name sureste_mkt
-exit
-
 ! CONFIGURAMOS VTP
 vtp domain juanmark
 vtp mode client
+! CREAMOS LAS VLANS
+! vlan 65
+! name sureste_ventas
+! exit
+
+! vlan 66
+! name sureste_ti
+! exit
+
+! vlan 67
+! name sureste_compras
+! exit
+
+! vlan 68
+! name sureste_mkt
+! exit
 
 ! CONFIGURAMOS ETHERCHANNEL
 interface range GigabitEthernet1/0/21-22

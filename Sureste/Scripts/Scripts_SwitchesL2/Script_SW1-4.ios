@@ -3,28 +3,25 @@ configure terminal
 ! hostname DIOSMAYA (Agregamos el hostname correspondiente al switch)
 ! Kukulkan - AhPuch - Ixtab - YumCimil
 
-vtp domain juanmark
-vtp mode transparent
-! CREAMOS LAS VLANS
-vlan 65
-name sureste_ventas
-exit
-
-vlan 66
-name sureste_ti
-exit
-
-vlan 67
-name sureste_compras
-exit
-
-vlan 68
-name sureste_mkt
-exit
-
 ! CONFIGURAMOS VTP
 vtp domain juanmark
 vtp mode client
+! CREAMOS LAS VLANS
+! vlan 65
+! name sureste_ventas
+! exit
+
+! vlan 66
+! name sureste_ti
+! exit
+
+! vlan 67
+! name sureste_compras
+! exit
+
+! vlan 68
+! name sureste_mkt
+! exit
 
 ! CONFIGURAMOS LOS PUERTOS PARA CADA VLANS
 interface range fastethernet0/1-5
@@ -50,8 +47,15 @@ exit
 ! CONFIGURAMOS PUERTO DE SALIDA PARA INTERVLAN
 interface range gigabitethernet0/1-2
 switchport mode trunk
-
+switchport nonegotiate
 switchport trunk allowed vlan 65,66,67,68
+exit
+
+! CONFIGURAMOS PUERTO DE SALIDA PARA ACCESS POINT
+interface fastethernet0/24
+switchport mode trunk
+switchport nonegotiate
+switchport trunk native vlan 66
 exit
 
 ! ACTIVAMOS RAPID PVST
