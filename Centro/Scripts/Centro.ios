@@ -1,7 +1,6 @@
 enable
 configure terminal
 no ip domain-lookup
-
 hostname Centro
 
 ip dhcp excl 148.60.128.1 148.60.128.9
@@ -55,17 +54,22 @@ encapsulation dot1Q 37
 ip addr 148.60.132.1 255.255.255.0
 
 int g0/1
+description Enlace a Noroeste
 ip addr 148.60.160.1 255.255.255.252
+bandwidth 1500
 no shut
 
 int g0/2/0
+description Enlace a Noreste
 ip addr 148.60.160.5 255.255.255.252
+bandwidth 1500
 no shut
 
 int g0/3/0
+description Enlace a Sureste
 ip addr 148.60.140.9 255.255.255.252
+bandwidth 1000
 no shut
-
 
 ip domain-name juanmark.com
 crypto key generate rsa
