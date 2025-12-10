@@ -3,8 +3,19 @@ configure terminal
 no ip domain-lookup
 hostname MulticapaEdPrincipal
 
-vtp mode client
+vtp mode server
 vtp domain juanmark
+
+vlan 33
+name gestionti
+vlan 34
+name gestionwlan
+vlan 35
+name ventaswlan
+vlan 36
+name compras
+vlan 37
+name practicantewlan
 
 int vlan 33
 ip addr 148.60.128.2 255.255.255.0
