@@ -9,9 +9,9 @@
 
 ## Instrucciones generales
 
-Dominio: JuanMark.com
-Número de Red IPv4: 148.60.0.0/16
-Red IPv6 (Dual Stack - Región Noroeste): 2006:AFEA:B0CA::/48
+- Dominio: JuanMark.com
+- Número de Red IPv4: 148.60.0.0/16
+- Red IPv6 (Dual Stack - Región Noroeste): 2006:AFEA:B0CA::/48
 
 ## Regiones de la Red
 
