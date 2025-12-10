@@ -3,19 +3,8 @@ configure terminal
 no ip domain-lookup
 hostname SwEdPrincipal
 
-vtp mode server
+vtp mode client
 vtp domain juanmark
-
-vlan 33
-name gestionti
-vlan 34
-name gestionwlan
-vlan 35
-name ventaswlan
-vlan 36
-name compras
-vlan 37
-name practicantewlan
 
 int vlan 33
 ip addr 148.60.128.5 255.255.255.0
