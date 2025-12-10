@@ -24,11 +24,17 @@ exit
 int range g1/0/4 - 14
 switchport mode access
 switchport access vlan 100
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
 no shut
 
 int range g1/0/15 - 24
 switchport mode access
 switchport access vlan 99
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
 no shut
 
 int range g1/0/1 -24

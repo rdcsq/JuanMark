@@ -13,6 +13,7 @@ name Servicios
 
 int vlan 97
 ip add 148.60.97.3 255.255.255.0
+exit
 
 int range g1/0/2 - 3
 switchport mod trunk
@@ -24,18 +25,37 @@ exit
 int range g1/0/4 - 10
 switchport mode access
 switchport access vlan 98
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+exit
+
+
 
 int range g1/0/11 - 17 
 switchport mode access
 switchport access vlan 97
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+exit
+
 
 int range g1/0/18 - 24
 switchport mode access
 switchport access vlan 99
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+exit
+
+
 
 
 int range g1/0/1 -24
 spanning-tree portfast
+
+
 
 int vlan 97
 standby 97 ip 148.60.97.5

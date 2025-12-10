@@ -11,15 +11,21 @@ ip address 148.60.110.29 255.255.255.252
 no shutdown
 
 int g0/1
-ip add
+ip add 148.60.160.18 255.255.255.252
 no shut
+
+
+int vlan 97
+ip add 148.60.97.8 255.255.255.0
+no shut
+exit
 
 router rip
 version 2
 no auto
 network 148.60.0.0
-
 exit
+
 ip domain-name juanmark.com
 crypto key generate rsa
 1024

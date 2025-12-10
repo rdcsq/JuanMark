@@ -42,7 +42,8 @@ standby 100 preempt
 standby 100 track GigabitEthernet1/0/1
 no shut
 int range g1/0/2 - 3
-switchport mode trunk
+switchport mod trunk
+switchport trunk allowed vlan 97,98,99,100
 switchport nonegotiate
 
 exit
@@ -79,8 +80,6 @@ version 2
 no auto
 network 148.60.0.0
 exit
-
-
 
 
 ip domain-name juanmark.com

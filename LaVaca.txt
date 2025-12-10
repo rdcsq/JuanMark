@@ -14,6 +14,12 @@ ip address 148.60.110.25 255.255.255.252
 no shutdown
 int g0/2/0
 ip add 148.60.160.14 255.255.255.252
+bandwidth 1500
+no shut
+exit
+
+int vlan 97
+ip add 148.60.97.7 255.255.255.0
 no shut
 exit
 

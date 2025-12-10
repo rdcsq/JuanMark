@@ -23,18 +23,34 @@ switchport trunk allowed vlan 97,98,99,100
 switchport nonegotiate
 exit
 
-int range g1/0/3 - 10
+int range g1/0/3 - 5
 switchport mode access
 switchport access vlan 98
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+
+int range g1/0/7 - 10
+switchport mode access
+switchport access vlan 98
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
 
 
 int range g1/0/11 - 17
 switchport mode access
 switchport access vlan 99
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
 
 int range g1/0/18 - 24
 switchport mode access
 switchport access vlan 100  
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
 
 
 int range g1/0/1 -24
