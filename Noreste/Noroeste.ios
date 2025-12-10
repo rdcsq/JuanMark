@@ -15,26 +15,34 @@ ipv6 unicast-routing
 interface GigabitEthernet0/1.9 
 encapsulation dot1Q 9
 ip address 148.60.0.1 255.255.255.0
-ipv6 address  2006:AFEA:B0CA:9::1/64
+ipv6 address 2006:AFEA:B0CA:9::1/64
 ipv6 enable
+ipv6 dhcp server vlan9_TIv6
+ipv6 nd other-config-flag
 exit
 interface GigabitEthernet0/1.5
 encapsulation dot1Q 5
 ip address 148.60.1.1 255.255.255.0
 ipv6 address 2006:AFEA:B0CA:5::1/64
 ipv6 enable
+ipv6 dhcp server vlan5_MKTv6
+ipv6 nd other-config-flag
 exit
 interface GigabitEthernet0/1.6
 encapsulation dot1Q 6
 ip address 148.60.2.1 255.255.255.0
 ipv6 address 2006:AFEA:B0CA:6::1/64
 ipv6 enable
+ipv6 dhcp server vlan6_VENTASv6
+ipv6 nd other-config-flag
 exit
 interface GigabitEthernet0/1.7
 encapsulation dot1Q 7
 ip address 148.60.3.1 255.255.255.0
 ipv6 address 2006:AFEA:B0CA:7::1/64
 ipv6 enable
+ipv6 dhcp server vlan7_COMPRASv6
+ipv6 nd other-config-flag
 exit
 interface GigabitEthernet0/1
 no shut
@@ -79,4 +87,20 @@ int g0/3/0
 ip addr 148.60.160.13 255.255.255.252
 bandwidth 1500
 no shut 
+exit
+ipv6 dhcp pool vlan9_TIv6
+ dns-server 2006:AFEA:B0CA:9::5
+ domain-name juanmark.com
+!
+ipv6 dhcp pool vlan5_MKTv6
+ dns-server 2006:AFEA:B0CA:9::5
+ domain-name juanmark.com
+!
+ipv6 dhcp pool vlan6_VENTASv6
+ dns-server 2006:AFEA:B0CA:9::5
+ domain-name juanmark.com
+!
+ipv6 dhcp pool vlan7_COMPRASv6
+ dns-server 2006:AFEA:B0CA:9::5
+ domain-name juanmark.com
 exit
